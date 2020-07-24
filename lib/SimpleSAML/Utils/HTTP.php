@@ -137,8 +137,8 @@ class HTTP
      */
     public static function isValidURL($url)
     {
-        $url = filter_var($url, FILTER_VALIDATE_URL);
-        if ($url === false) {
+        $urlCheck = parse_url($url, PHP_URL_HOST);
+        if (is_null($urlCheck)) {
             return false;
         }
         $scheme = parse_url($url, PHP_URL_SCHEME);
